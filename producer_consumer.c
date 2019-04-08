@@ -48,10 +48,11 @@ int remove_item(buffer_item *item){
 
 void *producer(void *param) {
     buffer_item item;
-
+    
     while (1) {
 		/* sleep for a random period of time */
-		sleep(rand());
+		//sleep(rand());
+		sleep(1);
 
 		/* generate a random number */
 		item = rand();
@@ -64,10 +65,11 @@ void *producer(void *param) {
 
 void *consumer(void *param) {
     buffer_item item;
-
+    
 	while (1) {
 		/* sleep for a random period of time */
-		sleep(rand());
+		//sleep(rand());
+		sleep(1);
 
 		if (remove_item(&item))
 			printf("report error condition");
@@ -90,10 +92,10 @@ int main(int argc, char **argv){
     pthread_t consumers[consumerNumber];
 
     for(i = 0; i < producerNumber ; i++){
-        pthread_create(&producers[i],NULL,producer,NULL);
+        pthread_create(&producers[i], NULL, producer, NULL);
     }
     for(i = 0; i < consumerNumber ; i++){
-        pthread_create(&consumers[i],NULL,consumer,NULL);
+        pthread_create(&consumers[i], NULL, consumer, NULL);
     }
     sleep(sleepTime);
     return 0;
