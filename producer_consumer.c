@@ -19,7 +19,7 @@ int insert_item(buffer_item item) {
 
 }
 
-int remove-item(buffer_item *item) {
+int remove_item(buffer_item *item) {
 
 }
 
@@ -28,11 +28,11 @@ void *producer(void *param) {
     
     while (true) {
 		/* sleep for a random period of time */
-		sleep(...);
+		sleep(rand());
 		
 		/* generate a random number */
 		item = rand();
-		if (insert item(item))
+		if (insert_item(item))
 			fprintf("report error condition");
 		else
 			printf("producer produced %d\n",item);
@@ -44,9 +44,9 @@ void *consumer(void *param) {
     
 	while (true) {
 		/* sleep for a random period of time */
-		sleep(...);
+		sleep(rand());
 		
-		if (remove item(&item))
+		if (remove_item(&item))
 			fprintf("report error condition");
 		else
 			printf("consumer consumed %d\n",item);
