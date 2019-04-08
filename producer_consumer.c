@@ -1,6 +1,6 @@
-#include<stdlib.h>
+#include <stdlib.h>
 #include <stdio.h>
-#include<pthread.h>
+#include <pthread.h>
 #include <semaphore.h>
 #include <time.h>
 #include "buffer.h"
@@ -50,11 +50,32 @@ int remove_item(buffer_item *item){
     return success;
 }
 
-void *producer(void *param){
+void *producer(void *param) {
     buffer_item item;
 
+    while (true) {
+		/* sleep for a random period of time */
+		sleep(rand());
+
+		/* generate a random number */
+		item = rand();
+		if (insert_item(item))
+			fprintf("report error condition");
+		else
+			printf("producer produced %d\n",item);
+	}
 }
 
-void *consumer(void *param){
+void *consumer(void *param) {
     buffer_item item;
+
+	while (true) {
+		/* sleep for a random period of time */
+		sleep(rand());
+
+		if (remove_item(&item))
+			fprintf("report error condition");
+		else
+			printf("consumer consumed %d\n",item);
+	}
 }
