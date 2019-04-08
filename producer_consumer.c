@@ -7,8 +7,8 @@
 #include <time.h>
 #include "buffer.h"
 
-buffer_item buffer[BUFFER_SIZE]
-int counter;
+buffer_item buffer[BUFFER_SIZE];
+int counter = 0;
 pthread_mutex_t mutex;
 sem_t full, empty;
 
@@ -90,10 +90,10 @@ int main(int argc, char **argv){
     pthread_t consumers[consumerNumber];
 
     for(i = 0; i < producerNumber ; i++){
-        pthread_creat(producers[i],NULL,producer,NULL);
+        pthread_create(&producers[i],NULL,producer,NULL);
     }
     for(i = 0; i < consumerNumber ; i++){
-        pthread_creat(consumers[i],NULL,consumer,NULL);
+        pthread_create(&consumers[i],NULL,consumer,NULL);
     }
     sleep(sleepTime);
     return 0;
