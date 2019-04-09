@@ -34,8 +34,8 @@ int remove_item(buffer_item *item){
     sem_wait(&full);
     pthread_mutex_lock(&mutex);
     if(counter != 0){
+    	counter--;
         *item = buffer[counter];
-        counter--;
         success = 0;
     }
     else{
