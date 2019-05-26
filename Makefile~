@@ -1,8 +1,0 @@
-.PHONY:clean
-all:DiskScheduling.o
-
-DiskScheduling.o: DiskScheduling.c
-	gcc -c DiskScheduling.c -o DiskScheduling.o
-
-clean:
-	rm -rf DiskScheduling.o
